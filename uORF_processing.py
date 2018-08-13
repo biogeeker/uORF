@@ -179,9 +179,36 @@ for i in range(len(exon_coor)):
     orf_coor_1.append(array_to_genome(exon_coor[i], mrna_coor_1[i], data[5][i]))
     orf_coor_2.append(array_to_genome(exon_coor[i], mrna_coor_2[i], data[5][i]))
     
+    
+UTR_length = []
 
+for i in range(len(seq_list)):
     
+    UTR_length.append(len(seq_list[i]))
     
+
+new_data = pd.DataFrame(
+        
+        {'UTR_length': UTR_length,
+         'exon_coor': exon_coor,
+         'mrna_coor_0': mrna_coor_0,
+         'mrna_coor_1': mrna_coor_1,
+         'mrna_coor_2': mrna_coor_2,
+         'orf_coor_0': orf_coor_0,
+         'orf_coor_1': orf_coor_1,
+         'orf_coor_2': orf_coor_2,
+         'seq':seq_list
+        })
+    
+uorf_data = pd.concat([data, new_data], axis=1)
+
+uorf_data.drop(uorf_data.columns[6:8], axis = 1, inplace = True)    
+
+colnames = uorf_data.columns.values
+
+colnames[0:6] = ['ID', 'symbol', 'chr', 'start', 'end', 'strand']    
+
+uorf_data.columns = colnames
     
     
     
