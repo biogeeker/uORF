@@ -210,6 +210,8 @@ colnames[0:6] = ['ID', 'symbol', 'chr', 'start', 'end', 'strand']
 
 uorf_data.columns = colnames
 
+uorf_data.to_csv('/Users/mingchuxu/Documents/GitHub/uORF/uORF_data.csv', sep = '\t') 
+
 del data
 del new_data
     
