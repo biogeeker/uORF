@@ -209,7 +209,9 @@ colnames = uorf_data.columns.values
 colnames[0:6] = ['ID', 'symbol', 'chr', 'start', 'end', 'strand']    
 
 uorf_data.columns = colnames
-    
+
+del data
+del new_data
     
     
         
